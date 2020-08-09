@@ -3,7 +3,7 @@ import websockets
 import pyautogui
 import json
 
-URL = "localhost"
+URL = ""
 PORT = 8765
 
 async def processRequest(websocket, path):
@@ -13,6 +13,7 @@ async def processRequest(websocket, path):
 		actionType = data["actionType"]
 
 		if actionType == "mouseMove":
+			print("action mouse move")
 			direction = data["direction"]
 			pixels = data["pixels"]
 
@@ -20,9 +21,21 @@ async def processRequest(websocket, path):
 				pixels = -pixels
 
 			if direction == "left" or direction == "right":
-				pyautogui.moveRel(pixels, 0, duration=0.25)	
+				print("move left or right")
+				pyautogui.moveRel(pixels, 0, duration=0)	
 			else:
-				pyautogui.moveRel(0, pixels, duration=0.25)	
+				print("top or bottom")
+				pyautogui.moveRel(0, pixels, duration=0)	
+		elif actionType == "keyPressed":
+			key = data["key"]
+
+			pyautogui.typewrite([key])
+		elif actionType == "scroll":
+			direction = data["direction"]
+			scrollDistance = 10;
+			if direction == "down":
+				scrollDistance = -scrollDistance
+			pyautogui.scroll(scrollDistance)
 		else:
 			pyautogui.click()
 			

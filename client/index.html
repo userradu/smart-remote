@@ -7,19 +7,26 @@
 	<body>
 
 		<div class="section">
-			<button onclick="moveMouse('top')">Top</button>
-
-			<button onclick="moveMouse('right')">Right</button>
-
-			<button onclick="moveMouse('bottom')">Bottom</button>
-			
-			<button onclick="moveMouse('left')">Left</button>
+			<button data-direction="top" class="change-direction-button">Top</button>
+			<button data-direction="right" class="change-direction-button">Right</button>
+			<button data-direction="bottom" class="change-direction-button">Bottom</button>
+			<button data-direction="left" class="change-direction-button">Left</button>
 		</div>
 
 		<div class="section">
 			<button onclick="mouseClick()">Click</button>
 		</div>
 
+		<div class="section">
+			<button onclick="onKeyPressed('f5')">F5</button>
+			<button onclick="onKeyPressed('f')">F</button>
+			<button onclick="onKeyPressed('esc')">ESC</button>
+		</div>
+
+		<div class="section">
+			<button onclick="onScroll('up')">Scroll Up</button>
+			<button onclick="onScroll('down')">Scroll Down</button>
+		</div>
 
 		<script src="script.js"></script> 
 
